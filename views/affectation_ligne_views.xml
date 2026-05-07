@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sigi_affectation_ligne_list" model="ir.ui.view">
+        <field name="name">sigi.affectation_ligne.list</field>
+        <field name="model">sigi.affectation_ligne</field>
+        <field name="arch" type="xml">
+            <list string="Détails des Affectations" create="false">
+                <!-- create="false" car on crée via le parent -->
+                <field name="name" string="Reference"/>
+                <field name="matiere_id"/>
+                <field name="beneficiaire_id"/>
+                <field name="direction_id"/>
+                <field name="etat_amortissement"
+                    widget="badge" 
+                       decoration-success="etat_amortissement == 'en_cours'" 
+                       decoration-danger="etat_amortissement == 'amorti'" 
+                       decoration-warning="etat_amortissement == 'termine'"/>
+                
+            </list>
+        </field>
+    </record>
+
+    <!-- 2. Vue Formulaire de l'Affectation Ligne -->
+    <record id="view_sigi_affectation_ligne_form" model="ir.ui.view">
+        <field name="name">sigi.affectation_ligne.form</field>
+        <field name="model">sigi.affectation_ligne</field>
+        <field name="arch" type="xml">
+            <form string="Ligne d'Affectation">
+                <header>
+                    <button name="action_calculer_amortissement" 
+                            string="Calculer amortissement" 
+                            type="object" 
+                            class="btn btn-success"/>
+                    <field name="etat_amortissement" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1><field name="name"/></h1>
+                    </div>
+                    <group>
+                        <group string="Détails">
+                            <field name="unite_id" readonly="True"/>
+                            <field name="matiere_id" readonly="1"/>
+                        </group>
+                        <group string="Mise en service">
+                            <field name="date_debut" readonly="1"/>
+                            <field name="direction_id" readonly="1"/>
+                        </group>
+                    </group>
+
+                    <notebook>
+                        <page string="Plan d'Amortissement" name="amortissement" class="text-primary fw-bold">
+                            <!-- Ici, on lie la vue définie plus haut par son ref -->
+                            <field name="amortissement_ids" 
+                                   mode="list" 
+                                   readonly="1"
+                                   context="{'list_view_ref': 'immobilisations.view_sigi_tableau_amortissement_embedded_list'}"/>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sigi_affectation_ligne_search" model="ir.ui.view">
+        <field name="name">sigi.affectation_ligne.view.search</field>
+        <field name="model">sigi.affectation_ligne</field>
+        <field name="arch" type="xml">
+            <search string="Rehercher les biens codifiés">
+                <field name="name"/>
+                <field name="matiere_id"/>
+                <field name="direction_id"/>
+                <field name="beneficiaire_id"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_sigi_affectation_ligne" model="ir.actions.act_window">
+        <field name="name">Liste des biens codifiés</field>
+        <field name="res_model">sigi.affectation_ligne</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">current</field>
+    </record>
+</odoo>

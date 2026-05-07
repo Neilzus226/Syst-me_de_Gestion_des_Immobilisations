@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   # vue liste pour les Emplacements
+    <record id="view_sigi_emplacement_list" model="ir.ui.view">
+        <field name="name">sigi.emplacement.list</field>
+        <field name="model">sigi.emplacement</field>
+        <field name="arch" type="xml">
+            <list string="Liste des Emplacements">
+                <field name="code"/>
+                <field name="name"/> 
+            </list>
+        </field>
+    </record> 
+
+
+    #vue formulaire pour les Emplacements
+    <record id="view_sigi_emplacement_form" model="ir.ui.view">
+        <field name="name">sigi.emplacement.form</field>
+        <field name="model">sigi.emplacement</field>
+        <field name="arch" type="xml">
+            <form string="Emplacement des Stocks">
+                <header>
+                    <button name="action_valider"  string="Enregistrer" type="object" class="btn btn-success"/>
+                </header>
+                <sheet>
+                <chatter/>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            
+                        </group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+    #action pour les Emplacements
+    <record id="action_sigi_emplacement" model="ir.actions.act_window">
+        <field name="name">emplacement</field>
+        <field name="res_model">sigi.emplacement</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

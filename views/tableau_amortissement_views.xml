@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sigi_tableau_amortissement_search" model="ir.ui.view">
+        <field name="name">sigi.tableau_amortissement.search</field>
+        <field name="model">sigi.tableau_amortissement</field>
+        <field name="arch" type="xml">
+            <search string="Recherche Amortissements">
+                <field name="annee"/>
+                <field name="matiere_id"/>
+                <separator/>
+                <group expand="1" string="Regrouper par">
+                    <!-- C'est cette ligne qui permet le regroupement par matière -->
+                    <filter string="Matière" name="group_by_matiere" context="{'group_by': 'matiere_id'}"/>
+                    <filter string="Année" name="group_by_annee" context="{'group_by': 'annee'}"/>
+                </group>
+                <searchpanel>
+                    <field name="matiere_id" icon="fa-list" string="Matières"></field>
+                </searchpanel>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_sigi_tableau_amortissement_list" model="ir.ui.view">
+        <field name="name">sigi.tableau_amortissement.tree</field>
+        <field name="model">sigi.tableau_amortissement</field>
+        <field name="arch" type="xml">
+            <!-- On met le tableau en rouge si la VNC est à 0 (amorti) -->
+            <list string="Lignes d'amortissement" create="false" delete="false" decoration-danger="valeur_restante == 0">
+                <field name="matiere_id" optional="show"/>
+                <field name="annee"/>
+                <field name="base_amortissable" widget="monetary"/>
+                <field name="montant" string="Annuité" widget="monetary" sum="Total des annuités"/>
+                <field name="cumul" widget="monetary"/>
+                <field name="valeur_restante" string="VNC" widget="monetary" decoration-bf="1"/>
+            </list>
+        </field>
+    </record>
+    
+
+    <record id="action_amortissement_dashboard" model="ir.actions.act_window">
+        <field name="name">Tableau de Bord Amortissements</field>
+        <field name="res_model">sigi.tableau_amortissement</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref="view_sigi_tableau_amortissement_search"/>
+        <field name="context">{
+            'search_default_group_by_matiere': 1,
+            'expand': 0
+        }</field>
+    </record>
+
+
+
+</odoo>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+      <menuitem id="menu_sigi_root" 
+              name="IMMO" 
+              sequence="-100"/>
+
+      <menuitem id="menu_sigi_immobilisation_main" 
+              name="Immobilisations" 
+              parent="menu_sigi_root" 
+              sequence="15"/>
+
+      <menuitem id="menu_sigi_affectation_main" 
+              name="Affectation" 
+              parent="menu_sigi_root" 
+              sequence="20"/>
+
+      <menuitem id="menu_sigi_inventaire_main" 
+              name="Inventaire" 
+              parent="menu_sigi_root" 
+              sequence="23"/>
+
+
+
+      <menuitem id="menu_sigi_config"
+              name="Données de base" 
+              parent="menu_sigi_root" 
+              sequence="25"/>
+
+
+      <menuitem id="menu_sigi_categorie" 
+              name="Catégories" 
+              parent="menu_sigi_config" 
+              action="action_sigi_categorie" 
+              sequence="30"/>
+
+    <menuitem id="menu_sigi_marque" 
+              name="Marques" 
+              parent="menu_sigi_config" 
+              action="action_sigi_marque" 
+              sequence="40"/>
+
+
+    <menuitem id="menu_sigi_modele" 
+              name="Modèles" 
+              parent="menu_sigi_config" 
+              action="action_sigi_modele" 
+              sequence="50"/>
+    
+
+    <menuitem id="menu_sigi_unite" 
+              name="Unités" 
+              parent="menu_sigi_config" 
+              action="action_sigi_unite" 
+              sequence="60"/>
+
+
+    <menuitem id="menu_sigi_fournisseur" 
+              name="Fournisseur" 
+              parent="menu_sigi_config" 
+              action="action_sigi_fournisseur" 
+              sequence="70"/> 
+ 
+
+    <menuitem id="menu_sigi_nature" 
+              name="Nature" 
+              parent="menu_sigi_config" 
+              action="action_sigi_nature" 
+              sequence="80"/> 
+
+    <menuitem id="menu_sigi_emplacement" 
+              name="Magasin" 
+              parent="menu_sigi_config" 
+              action="action_sigi_emplacement" 
+              sequence="90"/> 
+
+    <menuitem id="menu_sigi_matiere" 
+              name="Matiere" 
+              parent="menu_sigi_config" 
+              action="action_sigi_matiere" 
+              sequence="100"/> 
+
+
+    <menuitem id="menu_sigi_entrer_matiere" 
+              name=" Entrer une Matiere" 
+              parent="menu_sigi_immobilisation_main" 
+              action="action_sigi_entrer_matiere" 
+              sequence="130"/> 
+
+
+      <menuitem id="menu_sigi_affectation" 
+              name=" Efectuer Affectation" 
+              parent="menu_sigi_affectation_main" 
+              action="action_sigi_affectation" 
+              sequence="140"/> 
+
+      <menuitem id="menu_sigi_direction" 
+            name="Direction" 
+            parent="menu_sigi_config" 
+            action="action_sigi_direction" 
+            sequence="120"/> 
+
+      <menuitem id="menu_sigi_affectation_ligne" 
+            name="Liste des biens codifiés" 
+            parent="menu_sigi_immobilisation_main" 
+            action="action_sigi_affectation_ligne" 
+            sequence="120"/>
+
+      <!-- <menuitem id="menu_amortissement_dashboard"
+            name="Plan d'amortissement" 
+            parent="menu_sigi_immobilisation_main" 
+            action="action_amortissement_dashboard" 
+            sequence="135"/> -->
+
+      <menuitem id="menu_sigi_sortie" 
+            name="Effectuer une sortie" 
+            parent="menu_sigi_affectation_main" 
+            action="action_sigi_sortie" 
+            sequence="140"/>
+
+      <menuitem id="menu_sigi_mutation" 
+            name="Effectuer une mutation" 
+            parent="menu_sigi_affectation_main" 
+            action="action_sigi_mutation" 
+            sequence="140"/>
+
+      <menuitem id="menu_sigi_affectation_ligne" 
+            name="Liste des biens codifiés" 
+            parent="menu_sigi_immobilisation_main" 
+            action="action_sigi_affectation_ligne" 
+            sequence="120"/>
+
+      
+    <menuitem id="menu_sigi_session_inventaire" 
+              name="Sessions d'Inventaire" 
+              parent="menu_sigi_inventaire_main" 
+              action="action_sigi_inventaire" 
+              sequence="125"/>
+
+    <menuitem id="menu_sigi_rapport_patrimoine" 
+              name="État du Patrimoine" 
+              parent="menu_sigi_inventaire_main" 
+              action="action_rapport_patrimoine_groupe" 
+              sequence="130"/>
+
+</odoo>

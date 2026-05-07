@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sigi_affectation_form" model="ir.ui.view">
+        <field name="name">sigi.affectation.form</field>
+        <field name="model">sigi.affectation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_valider" string="Confirmer" 
+                            type="object" class="btn btn-success" 
+                            invisible="state != 'brouillon'"/>
+
+                    <button name="action_annuler" string="Annuler" 
+                        type="object" 
+                        invisible="state != 'valide'"
+                        confirm="Êtes-vous sûr de vouloir annuler cette affectation ? Les articles seront remis en stock."/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    
+                    <notebook>
+                        <page string="Détails des Afectations">
+                            <field name="line_ids">
+                                <list editable="bottom">
+                                    <field name="name" readonly="1"/>
+                                    <field name="matiere_id"/>
+                                    <field name="unite_id"
+                                            domain="[('matiere_id', '=', matiere_id), ('status', '=', 'disponible')]"
+                                            options="{'no_create': True}"/>
+                                    <field name="beneficiaire_id"/>
+                                    <field name="direction_id"/>
+                                    <field name="date_debut"/>
+                                </list>
+                            </field>
+                        </page> 
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="action_sigi_affectation" model="ir.actions.act_window">
+        <field name="name">Affectation</field>
+        <field name="res_model">sigi.affectation</field>
+        <field name="view_mode">form</field>
+    </record>
+</odoo>

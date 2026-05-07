@@ -1,0 +1,146 @@
+Variables de design pour une maintenance facile
+/*:root {
+    --sigi-primary: #4f46e5;       /* Indigo moderne 
+    --sigi-secondary: #64748b;     /* Slate 
+    --sigi-success: #10b981;      /* Emeraude 
+    --sigi-bg: #f8fafc;
+    --sigi-border: #e2e8f0;
+    --sigi-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+/* Conteneur principal du formulaire 
+    .o_form_view.o_sigi_form_modern {
+    background-color: var(--sigi-bg) !important;
+    padding: 20px;
+
+    .o_form_sheet_bg {
+        background: none !important;
+        border-bottom: none !important;
+    }
+
+    .o_form_sheet {
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+        border-radius: 16px !important;
+        box-shadow: var(--sigi-shadow) !important;
+        border: 1px solid var(--sigi-border) !important;
+        padding: 40px !important;
+        transition: transform 0.3s ease;
+    }
+
+    /* En-tête du document (Statut et Titre) */
+    /*.oe_title {
+        margin-bottom: 25px;
+        h1 {
+            font-family: 'Inter', sans-serif;
+            color: black;
+            font-size: 2rem;
+            letter-spacing: -0.025em;
+        }
+    }
+
+    /* Groupe de champs et Labels */
+    /*.o_inner_group .o_form_label {
+        font-weight: 600 !important;
+        color: var(--sigi-secondary) !important;
+        text-transform: uppercase;
+        font-size: 0.7rem;
+        letter-spacing: 0.05em;
+        margin-bottom: 4px;
+    }
+
+    /* Style des inputs *
+    input.o_input, select.o_input, textarea.o_input {
+        border-radius: 8px !important;
+        border: 1px solid var(--sigi-border) !important;
+        padding: 8px 12px !important;
+        background-color: #ffffff !important;
+        transition: border-color 0.2s, box-shadow 0.2s;
+        
+        &:focus {
+            border-color: var(--sigi-primary) !important;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1) !important;
+        }
+    }
+
+    /* Onglets (Notebook) 
+    .nav-tabs {
+        border-bottom: 2px solid var(--sigi-border) !important;
+        margin-top: 30px;
+        gap: 10px;
+
+        .nav-link {
+            border: none !important;
+            font-weight: 600;
+            color: var(--sigi-secondary);
+            padding: 12px 20px;
+            transition: all 0.3s;
+            border-radius: 8px 8px 0 0;
+
+            &:hover {
+                background-color: #f1f5f9;
+                color: var(--sigi-primary);
+            }
+
+            &.active {
+                background: none !important;
+                color: var(--sigi-primary) !important;
+                border-bottom: 3px solid var(--sigi-primary) !important;
+            }
+        }
+    }
+
+    /* Tableaux des lignes (One2many) *
+    .o_field_one2many, .o_field_many2many {
+        margin-top: 15px;
+        
+        .o_list_table {
+            border-collapse: separate !important;
+            border-spacing: 0 8px !important; /* Effet de lignes flottantes 
+            background: transparent !important;
+
+            /*thead th {
+                background-color: transparent !important;
+                border-top: none !important;
+                border-bottom: 2px solid var(--sigi-border) !important;
+                color: black;
+                padding: 12px !important;
+            }
+
+            tbody tr {
+                background-color: #ffffff !important;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+                transition: transform 0.2s, box-shadow 0.2s;
+
+                td {
+                    border-top: 1px solid var(--sigi-border) !important;
+                    border-bottom: 1px solid var(--sigi-border) !important;
+                    padding: 12px !important;
+                    
+                    &:first-child { border-left: 1px solid var(--sigi-border); border-radius: 8px 0 0 8px; }
+                    &:last-child { border-right: 1px solid var(--sigi-border); border-radius: 0 8px 8px 0; }
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+                    background-color: #fcfcfc !important;
+                }
+            }
+        }
+    }
+
+    /* Barre de statut (Statusbar) 
+    .o_form_statusbar {
+        background-color: #ffffff !important;
+        border-bottom: 1px solid var(--sigi-border) !important;
+        padding: 10px 20px !important;
+        border-radius: 12px 12px 0 0;
+
+        .o_statusbar_buttons button {
+            border-radius: 6px !important;
+            font-weight: 600 !important;
+            padding: 6px 16px !important;
+            text-transform: none !important;
+        }
+    }
+}

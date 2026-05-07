@@ -1,0 +1,66 @@
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sigi_stock_matiere_form" model="ir.ui.view">
+        <field name="name">sigi.stock_matiere.form</field>
+        <field name="model">sigi.stock_matiere</field>
+        <field name="arch" type="xml">
+            <form string="Détail de l'Unité">
+               
+                <header>
+                    <field name="status" widget="statusbar" 
+                           options="{'clickable': '1'}" 
+                           statusbar_visible="disponible,affecte,maintenance"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Numéro d'Inventaire"/>
+                        <h1>
+                            <field name="name" placeholder="Ex: INV/2026/001"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group name="info_produit" string="Caractéristiques Matériel">
+                            <field name="matiere_id" options="{'no_create': True}"/>
+                            <field name="marque_id" options="{'no_create': True}"/>
+                            <field name="modele_id" options="{'no_create': True}"/>
+                        </group>
+                        <group name="info_etat" string="État de l'unité">
+                        
+                            <field name="status" readonly="1" force_save="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sigi_stock_matiere" model="ir.actions.act_window">
+        <field name="name">Unités des Matière</field>
+        <field name="res_model">sigi.stock_matiere</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
+
+
+        <field name="name">sigi.stock.matiere.list</field>
+        <field name="model">sigi.stock_matiere</field>
+        <field name="arch" type="xml">
+            <list string="Registre des Unités" create="false"
+             decoration-info="status == 'affecte'" 
+             decoration-muted="status == 'hors_service'">
+                
+                <field name="name" decoration-bf="1"/>
+               
+                <field name="matiere_id"/>
+                <field name="marque_id"/>
+                <field name="modele_id"/>
+                
+                <field name="status" 
+                       widget="badge" 
+                       decoration-success="status == 'disponible'" 
+                       decoration-info="status == 'affecte'" 
+                       decoration-warning="status == 'maintenance'" 
+                       decoration-danger="status == 'hors_service'"/>
+            </list>
+        </field>
+    </record> -->

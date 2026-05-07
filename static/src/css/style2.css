@@ -1,0 +1,39 @@
+/* Style global pour la vue liste du tableau d'amortissement */
+.o_list_view .table {
+    border-collapse: separate;
+    border-spacing: 0 5px; /* Espacement entre les lignes */
+    background-color: #f8f9fa;
+}
+
+/* Styliser les lignes de regroupement (Matière) */
+.o_list_view .o_group_header {
+    background-image: linear-gradient(to right, #714B67, #875A7B) !important;
+    color: white !important;
+    font-weight: bold;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Changer l'icône de la flèche de regroupement */
+.o_list_view .o_group_header .o_group_caret {
+    color: #ffca28 !important;
+}
+
+/* Style pour les cellules de données */
+.o_list_view td {
+    padding: 12px 8px !important;
+    vertical-align: middle;
+}
+
+/* Mise en évidence du cumul et de la VNC */
+.o_list_view td[name="cumul"], 
+.o_list_view td[name="valeur_restante"] {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+}
+
+/* Effet au survol des lignes */
+.o_list_view .o_data_row:hover {
+    background-color: #e9ecef !important;
+    transition: background-color 0.3s ease;
+}

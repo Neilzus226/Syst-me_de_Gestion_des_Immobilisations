@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_sigi_mutation_list" model="ir.ui.view">
+        <field name="name">sigi.mutation.tree</field>
+        <field name="model">sigi.mutation</field>
+        <field name="arch" type="xml">
+            <list string="Mutations" decoration-info="state == 'draft'" decoration-success="state == 'confirme'">
+                <field name="name"/>
+                <field name="date_mutation"/>
+                <field name="affectation_ligne_id"/>
+                <field name="matiere_id"/>
+                <field name="direction_depart_id"/>
+                <field name="direction_arrive_id"/>
+                <field name="state" widget="badge" decoration-success="state == 'confirme'" decoration-info="state == 'draft'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_sigi_mutation_form" model="ir.ui.view">
+        <field name="name">sigi.mutation.form</field>
+        <field name="model">sigi.mutation</field>
+        <field name="arch" type="xml">
+            <form string="Mutation de Bien">
+                <header>
+                    <button name="action_confirmer" 
+                            string="Confirmer la Mutation" 
+                            type="object" 
+                            class="oe_highlight" 
+                            invisible="state == 'confirme'"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirme"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="Référence Mutation"/>
+                        <h1>
+                            <field name="name" placeholder="Nouveau..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Identification du Bien">
+                            <field name="affectation_ligne_id" 
+                                   options="{'no_create': True, 'no_open': False}"
+                                   readonly="state == 'confirme'"/>
+                            <field name="matiere_id"/>
+                            <field name="date_mutation" readonly="state == 'confirme'"/>
+                        </group>
+                        <group string="Mouvement de Direction">
+                            <field name="direction_depart_id" 
+                                   readonly="1" 
+                                   force_save="1"/>
+                            <field name="direction_arrive_id" 
+                                   options="{'no_create': True}"
+                                   readonly="state == 'confirme'"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Justification" name="justification">
+                            <group>
+                                <field name="motif" 
+                                       placeholder="Décrivez ici la raison de ce transfert (changement de bureau, nouvelle affectation de service...)"
+                                       readonly="state == 'confirme'"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sigi_mutation" model="ir.actions.act_window">
+        <field name="name">Mutations de Matériel</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">sigi.mutation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sigi_entrer_matiere_list" model="ir.ui.view">
+            <field name="name">sigi.entrer_matiere.list</field>
+            <field name="model">sigi.entrer_matiere</field>
+            <field name="arch" type="xml">
+                <list string="Liste des Matières">
+                    <field name="date_entree"/>
+                    <field name="nature"/>
+                    <field name="fournisseur"/>
+                    <field name="emplacement"/>
+                </list>
+            </field>
+        </record>
+
+        <record id="view_sigi_entrer_matiere_form" model="ir.ui.view">
+            <field name="name">sigi.entrer_matiere.form</field>
+            <field name="model">sigi.entrer_matiere</field>
+            <field name="arch" type="xml">
+                <form class="o_sigi_form_modern">
+                    <header>
+                        <button name="action_confirm" invisible="state=='confirme'" string="Confirmer" type="object" class="btn btn-success" data-hotkey="q"/>
+                        <button name="action_cancel" invisible="state=='annule'" string="Annuler" type="object" class="btn btn-danger" data-hotkey="x"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button name="list_immo"  type="object" class="oe_state_button" icon="fa-list">
+                                <field name="immo_count" widget="statinfo" string="Liste Immo"/>
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label for="name" string="REFERENCE D'ENTREE"/>
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group name="info_gauche">
+                                <field name="date_entree" widget="date"/>
+                                <field name="nature"/>
+                            </group>
+                            <group name="info_droite">
+                                <field name="fournisseur" widget="many2one_avatar"/>
+                                <field name="emplacement" widget="res_partner_many2one" options="{'no_create': True}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Détails des Entrées" name="details" autofocus="autofocus">
+                                <field name="ligne_ids" class="o_sigi_table_modern">
+                                    <list editable="bottom">
+                                        <field name="matiere_id" optional="show"/>
+                                        <field name="marque_id" optional="show"/>
+                                        <field name="modele_id" optional="show"/>
+                                        <field name="categorie_id" optional="show"/>
+                                        <field name="unite_id" optional="show"/>
+                                        <field name="quantite" sum="Total Quantité"/>
+                                        <field name="cout" widget="monetary" sum="Coût Total"/>
+                                        <field name="date_achat" optional="show"/>
+                                    </list>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <chatter/>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_sigi_entrer_matiere" model="ir.actions.act_window">
+            <field name="name">Entrer_matières</field>
+            <field name="res_model">sigi.entrer_matiere</field>
+            <field name="view_mode">form</field>
+        </record>
+    </data>
+</odoo>

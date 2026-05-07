@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+   ""vue liste pour les Affectations"""
+    <record id="view_sigi_fournisseur_list" model="ir.ui.view">
+        <field name="name">sigi.fournisseur.list</field>
+        <field name="model">sigi.fournisseur</field>
+        <field name="arch" type="xml">
+            <list string="Liste des Unités disponibles">
+                <field name="libele_long"/>
+                <field name="libele_court"/>
+                <field name="contact"/>
+                <field name="addresse"/>  
+            </list>
+        </field>
+    </record> 
+
+
+    ""vue formulaire pour les Stock des matières"""
+    <record id="view_sigi_fournisseur_form" model="ir.ui.view">
+        <field name="name">sigi.fournisseur.form</field>
+        <field name="model">sigi.fournisseur</field>
+        <field name="arch" type="xml">
+            <form string="Les Fournisseurs">
+                <header>
+                    <button name="action_valider"  string="Enregistrer" type="object" class="btn btn-success"/>
+                </header>
+                <sheet>
+                    
+                    <group>
+                        <group>
+                            <field name="libele_long"/>
+                        </group>
+                    
+                        <group>
+                            <field name="libele_court"/>
+                        </group>
+
+                        <group>
+                            <field name="contact" placeholder="Ex: +226 65468063"/>
+                        </group>
+
+                        <group>
+                            <field name="addresse" placeholder="Ex: kelebonajuliens@gmail.com "/>
+                        </group>
+                        
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+
+    ""action pour les stockmatière"""
+    <record id="action_sigi_fournisseur" model="ir.actions.act_window">
+        <field name="name">fournisseur</field>
+        <field name="res_model">sigi.fournisseur</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+</odoo>

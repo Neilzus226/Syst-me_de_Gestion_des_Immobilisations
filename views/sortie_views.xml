@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_sigi_sortie_form" model="ir.ui.view">
+        <field name="name">sigi.sortie.form</field>
+        <field name="model">sigi.sortie</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="valider_sortie" string="Confirmer" type="object" class="btn btn-success" invisible="state == 'confirme'"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" string="REFERENCE DE SORTIE"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group string="Origine">
+                            <field name="affectation_ligne_id" options="{'no_create': True}"/>
+                            <field name="matiere_id" options="{'no_create': True, 'no_open': True}"/>
+                            <field name="lieu"/>
+                        </group>
+                        <group string="Détails de Sortie">
+                            <field name="date_sortie"/>
+                            <field name="vnc_cloture"/>
+                            <field name="motif_sortie"/>
+                        </group>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_sigi_sortie_list" model="ir.ui.view">
+        <field name="name">sigi.sortie.tree</field>
+        <field name="model">sigi.sortie</field>
+        <field name="arch" type="xml">
+            <list string="Liste des Sorties">
+                <!-- Ajoute les champs ici pour qu'ils apparaissent dans les colonnes -->
+                 <field name="name"/>
+                <field name="date_sortie"/>
+                <field name="matiere_id"/>
+                <field name="affectation_ligne_id"/>
+                <field name="motif_sortie"/>
+                <field name="vnc_cloture"/>
+                <field name="motif_sortie"/>
+                <field name="state" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'confirme'"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_sigi_sortie" model="ir.actions.act_window">
+        <field name="name">Sorties</field>
+        <field name="res_model">sigi.sortie</field>
+        <field name="view_mode">list,form</field>
+    </record>
+</odoo>
